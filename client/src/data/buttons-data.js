@@ -1,74 +1,91 @@
+import { MdVoicemail } from "react-icons/md";
+import { BsBackspace, BsPlus } from "react-icons/bs";
+import { VscDebugRestart } from "react-icons/vsc";
+import { FiRefreshCw } from 'react-icons/fi'
+// import { RiFireFill } from 'react-icons/ri'
+
+const VoiceMail = () => <MdVoicemail />
+const BackSpace = () => <BsBackspace />
+const Plus = () => <BsPlus />
+const Restart = () => <FiRefreshCw />
+
+
+
 export const buttonsData = [
     {
-        disabled: true,
-        subtitle: '',
+        id: 1,
+        subtitle: <VoiceMail />,
         title: '1',
-        value: 1
+        value: '',
+        buttonType: 'feedback'
     },
     {
-        disabled: false,
+        id: 2,
         subtitle: 'abc',
         title: '2',
         value: 2
     },
     {
-        disabled: false,
+        id: 3,
         subtitle: 'def',
         title: '3',
         value: 3
     },
     {
-        disabled: false,
+        id: 4,
         subtitle: 'ghi',
         title: '4',
         value: 4
     },
     {
-        disabled: false,
+        id: 5,
         subtitle: 'jkl',
         title: '5',
         value: 5
     },
     {
-        disabled: false,
+        id: 6,
         subtitle: 'mno',
         title: '6',
         value: 6
     },
     {
-        disabled: false,
+        id: 7,
         subtitle: 'pqrs',
         title: '7',
         value: 7
     },
     {
-        disabled: false,
+        id: 8,
         subtitle: 'tuv',
         title: '8',
         value: 8
     },
     {
-        disabled: false,
+        id: 9,
         subtitle: 'wxyz',
         title: '9',
         value: 9
     },
     {
-        disabled: true,
+        id: 10,
         subtitle: '',
-        title: '*',
-        value: '*'
+        title: <Restart />,
+        value: '',
+        buttonType: 'reset'
     },
     {
-        disabled: true,
-        subtitle: '',
+        id: 11,
+        subtitle: <Plus />,
         title: '0',
-        value: 0
+        value: '',
+        buttonType: 'feedback'
     },
     {
-        disabled: true,
+        id: 12,
         subtitle: '',
-        title: '#',
-        value: '#'
+        title: <BackSpace />,
+        value: '',
+        buttonType: 'back'
     }
 ];

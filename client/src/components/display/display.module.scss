@@ -1,4 +1,52 @@
+@import "../../styles/variables";
+
 .display {
-  background: red;
   flex: 1;
+}
+
+.number {
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  flex-wrap: wrap;
+}
+.feedback {
+  height: 25%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  color: $color2;
+  font-weight: 500;
+}
+.combinations {
+  margin: 0 auto;
+  width: 80%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  color: $color6;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    height: 0.6rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color6;
+    border-radius: 50px;
+  }
+
+  p {
+    padding: 0 0.3rem;
+    font-size: 1.5rem;
+    border-right: 1px solid black;
+  }
+  justify-content: flex-start;
 }
