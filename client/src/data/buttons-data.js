@@ -1,11 +1,11 @@
 import { MdVoicemail } from "react-icons/md";
 import { BsBackspace, BsPlus } from "react-icons/bs";
-import { FiRefreshCw } from 'react-icons/fi'
+import { VscDebugRestart } from "react-icons/vsc";
 
 const VoiceMail = () => <MdVoicemail />
 const BackSpace = () => <BsBackspace />
 const Plus = () => <BsPlus />
-const Restart = () => <FiRefreshCw />
+const Restart = () => <VscDebugRestart />
 
 
 

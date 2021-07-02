@@ -9,7 +9,16 @@ import Keyboard from './components/keyboard/keyboard'
 function App() {
   const [inputNumber, setInputNumber] = useState('')
   const [combinationArray, setCombinationArray] = useState([])
+  const [wordsArray, setWordsArray] = useState([])
   const [feedback, setFeedback] = useState('')
+
+  // let spreddedWordsArray = []
+  // for (let i = 0; i < wordsArray.length; i++) {
+  //   spreddedWordsArray.push(...wordsArray[i])
+  // }
+  const spreddedWordsArray = wordsArray.reduce((acc, el) => [...acc, ...el], [])
+
+
 
   useEffect(() => {
     const data = { value: inputNumber }
@@ -21,10 +30,12 @@ function App() {
       };
       const res = await fetch('/convert', requestOptions);
       const content = await res.json();
-      setCombinationArray(content)
+      setCombinationArray(content.combinations)
+      setWordsArray(content.words)
     }
     if (inputNumber.length === 0) {
       setCombinationArray([])
+      setWordsArray([])
       return
     }
     if (inputNumber.length >= 8) {
@@ -59,7 +70,7 @@ function App() {
     <Layout>
       <Screen >
         <Header />
-        <Display inputNumber={inputNumber} combinations={combinationArray} feedback={feedback} />
+        <Display inputNumber={inputNumber} combinations={combinationArray} words={spreddedWordsArray} feedback={feedback} />
         <Keyboard
           inputNumber={inputNumber}
           inputHandlers={{

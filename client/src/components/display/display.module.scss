@@ -5,7 +5,8 @@
 }
 
 .number {
-  height: 55%;
+  // background-color: aqua;
+  height: 35%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,7 @@
   flex-wrap: wrap;
 }
 .feedback {
+  // background: blue;
   height: 25%;
   text-align: center;
   display: flex;
@@ -23,7 +25,9 @@
   color: $color2;
   font-weight: 500;
 }
+
 .combinations {
+  // background: rgb(255, 8, 0);
   margin: 0 auto;
   width: 80%;
   height: 20%;
@@ -46,7 +50,9 @@
   p {
     padding: 0 0.3rem;
     font-size: 1.5rem;
-    border-right: 1px solid black;
+    &:not(:first-child) {
+      border-left: 1px solid black;
+    }
   }
   justify-content: flex-start;
 }

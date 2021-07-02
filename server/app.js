@@ -18,17 +18,25 @@ const combinationsHandler = (a, b, ...c) =>
 //Server
 
 const express = require('express')
+const fs = require('fs')
 const app = express()
 const port = process.env.PORT || 4000
-
 app.use(express.json())
+const mostUsedEnglishWords = fs.readFileSync('./1-1000.txt', 'utf-8').split('\n');
 
 app.post('/convert', (req, res) => {
     const inputValue = req.body.value
     const numbers = inputValue.split('')
     const stringsArray = []
     numbers.forEach(num => stringsArray.push(numbersToLetters[num]))
-    res.status(200).send(combinationsHandler(...stringsArray))
+    const combinations = combinationsHandler(...stringsArray)
+    const words = combinations.map(comb => mostUsedEnglishWords.filter(word => word.includes(comb))).filter(el => el.length > 0)
+    
+    const data = {
+        combinations,
+        words
+    }
+    res.status(200).send(data)
 })
 
 
