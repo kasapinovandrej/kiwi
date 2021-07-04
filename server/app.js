@@ -5,8 +5,11 @@ const combinationsHandler = require("./helper/t9CombinationHandlers");
 
 app.use(express.json());
 app.post("/convert", (req, res) => {
-    const inputValue = req.body.value;
-    res.status(200).send(combinationsHandler(inputValue));
+    try {
+        return res.status(200).send(combinationsHandler(req.body.value))
+    } catch (err) {
+        return res.status(400).send(err.message)
+    }
 });
 
 app.listen(port, () => {

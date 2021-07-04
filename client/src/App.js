@@ -12,26 +12,26 @@ function App() {
   const [wordsArray, setWordsArray] = useState([])
   const [feedback, setFeedback] = useState('')
 
-  // let spreddedWordsArray = []
-  // for (let i = 0; i < wordsArray.length; i++) {
-  //   spreddedWordsArray.push(...wordsArray[i])
-  // }
-  const spreddedWordsArray = wordsArray.reduce((acc, el) => [...acc, ...el], [])
-
-
-
   useEffect(() => {
     const data = { value: inputNumber }
     const updateNumber = async () => {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      };
-      const res = await fetch('/convert', requestOptions);
-      const content = await res.json();
-      setCombinationArray(content.combinations)
-      setWordsArray(content.words)
+      try {
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        };
+        const res = await fetch('/convert', requestOptions);
+        if (!res.ok) throw new Error('Input must contain numbers from 2-9, with maximum length of 8 characters')
+        const content = await res.json();
+        setCombinationArray(content.combinations)
+        setWordsArray(content.words)
+      } catch (err) {
+        setWordsArray([])
+        setCombinationArray([])
+        setFeedback(err.message)
+        console.error(err)
+      }
     }
     if (inputNumber.length === 0) {
       setCombinationArray([])
@@ -70,7 +70,7 @@ function App() {
     <Layout>
       <Screen >
         <Header />
-        <Display inputNumber={inputNumber} combinations={combinationArray} words={spreddedWordsArray} feedback={feedback} />
+        <Display inputNumber={inputNumber} combinations={combinationArray} words={wordsArray} feedback={feedback} />
         <Keyboard
           inputNumber={inputNumber}
           inputHandlers={{
